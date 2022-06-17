@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/bestime@beta.min.js"></script>
+  <script>
+    var iBus = new ns.CreateEventBus()
+  </script>
+  <script src="./js/ryJSBridge.js?=12"></script>
+
+  <script>
+    
+  </script>
+
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      background: yellow;
+      margin: 0;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>测试页面 2</h1>
+    <button id="demo">按钮 => 0</button>
+  </div>
+  <ul id="ulbox"></ul>
+  <script>
+    // 
+
+    let count = 0
+
+    function renderMessageToView (data) {
+      const oUl = document.getElementById('ulbox')
+      oUl.innerHTML += `<li>${data}</li>`  
+    }
+
+    iBus.on("jPush", renderMessageToView)
+    iBus.on("parseError", renderMessageToView)
+
+    
+
+    document.getElementById('demo').onclick = async function () {
+      count++
+      this.innerText = '按钮 => ' + count
+      const message = '我点击了' + count + '次'
+
+      const res = await ryJSBridge.asyncMessage(message)
+      renderMessageToView(res)
+      
+    }
+
+    window.onload = async function () {
+      const res = await ryJSBridge.asyncMessage('网页加载')
+      renderMessageToView(res)
+      
+    }
+  </script>
+</body>
+</html>
