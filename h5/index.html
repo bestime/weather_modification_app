@@ -24,12 +24,53 @@
       margin: 0;
       height: 100%;
     }
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #67d5ff;
+      padding: 20px 0;
+      
+    }
+
+    h1 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: #000 solid 1px;
+      border-radius: 6px;
+      margin: 10px;
+      font-size: 14px;
+      color: #fff;
+      word-break: break-all;
+      color: #000;
+      line-height: 20px;
+      padding: 5px 10px;
+    }
+
+
   </style>
 </head>
 <body>
-  <div>
-    <h1>测试页面 2</h1>
-    <button id="demo">按钮 => 0</button>
+  <div class="top">
+    <h1>桥思 app-webview demo</h1>
+    <button id="demo">测试通信</button>
   </div>
   <ul id="ulbox"></ul>
   <script>
